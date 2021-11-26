@@ -1,0 +1,74 @@
+.cards-box {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  .card {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 6px;
+    overflow: hidden;
+    .card-img {
+      img {
+        object-fit: cover;
+        height: 120px;
+        width: 100%;
+        aspect-ratio: 3.5/3;
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+    .desc-box {
+      padding: 5px 15px 15px;
+      div {
+        margin: 5px 0;
+      }
+      .title {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+        font-family: "Ubuntu";
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3; // change 3 with any number of lines you want to set;
+        width: 100%;
+      }
+      .price-section {
+        font-weight: 700;
+        font-size: 15px;
+        color: tomato;
+        line-height: 18px;
+      }
+      .seller {
+        font-size: 11px;
+        color: #bcbcbc;
+        font-weight: normal;
+        line-height: 16px;
+        text-transform: capitalize;
+        font-weight: 600;
+        .seller-title {
+          color: darkorange !important;
+          padding-right: 5px;
+        }
+      }
+      .cart-btn {
+        background: tomato;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        line-height: 18px;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        padding: 6px 8px;
+        width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        cursor: pointer;
+      }
+    }
+  }
+}

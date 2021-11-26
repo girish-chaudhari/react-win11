@@ -1,18 +1,21 @@
-header{
-    font-family: 18px;
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rebeccapurple;
-    padding: 0 15px ;
-
+header {
+  font-family: 18px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rebeccapurple;
+  padding: 0 15px;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
-.logo{
-    font-weight: 600;
-    font-size: 26px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+.logo {
+  font-weight: 600;
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
