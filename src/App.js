@@ -1,12 +1,20 @@
-import './App.css';
-import Header from "./components/content/header"
-import ProductPage from "./components/content/internal/products"
+import "./App.css";
+import Header from "./components/content/header";
+import Home from "./components/content/internal/products";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SinglePage from "./components/content/internal/singlePage";
+// import Home from "./components"
 
 function App() {
   return (
     <>
-      <Header/>
-      <ProductPage />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/singlepage/:id" element={<SinglePage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
