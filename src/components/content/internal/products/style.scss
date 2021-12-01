@@ -9,7 +9,7 @@
     overflow: hidden;
     .card-img {
       img {
-        object-fit: cover;
+        object-fit: contain;
         height: 120px;
         width: 100%;
         aspect-ratio: 3.5/3;
