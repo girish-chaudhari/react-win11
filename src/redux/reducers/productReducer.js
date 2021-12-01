@@ -1,4 +1,4 @@
-import { prodConstants } from "../constants";
+import { prodConstants, singleProdConstants } from "../constants";
 
 const initState = {
   products: [],
@@ -11,14 +11,14 @@ export default (state = initState, action) => {
     case prodConstants.DATA_REQUEST:
       state = {
         ...state,
-        pageRequest: true,
+        loading: true,
       };
       break;
     case prodConstants.DATA_SUCCESS:
       state = {
         ...state,
         products: action.payload,
-        pageRequest: false,
+        loading: false,
       };
       break;
 
@@ -26,7 +26,34 @@ export default (state = initState, action) => {
       state = {
         ...state,
         products: action.payload,
-        pageRequest: false,
+        loading: false,
+      };
+      break;
+  }
+  return state;
+};
+
+export const singleProductView = (state = initState, action) => {
+  switch (action.type) {
+    case singleProdConstants.DATA_REQUEST:
+      state = {
+        ...state,
+        loading: true,
+      };
+      break;
+    case singleProdConstants.DATA_SUCCESS:
+      state = {
+        ...state,
+        products: action.payload,
+        loading: false,
+      };
+      break;
+
+    case singleProdConstants.DATA_FAILURE:
+      state = {
+        ...state,
+        products: action.payload,
+        loading: false,
       };
       break;
   }

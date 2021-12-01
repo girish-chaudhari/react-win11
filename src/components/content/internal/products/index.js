@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./style.scss";
 import { Container, Skeleton } from "@mui/material";
 import { Link } from "react-router-dom";
 // import { data } from "../../../../data";
 import { useDispatch, useSelector } from "react-redux";
-import { productsView } from "../../../../redux/actions/products";
+import { productsView, singleView } from "../../../../redux/actions/products";
 
 const GetAllProducts = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,6 @@ const GetAllProducts = () => {
   const skeletonLoop = [1, 2, 3, 4, 5, 6, 7, 8];
 
   useEffect(() => {
-    console.log("hello");
     dispatch(productsView());
   }, []);
 
@@ -25,18 +24,18 @@ const GetAllProducts = () => {
           <div className="cards-box">
             {skeletonLoop.map((item, i) => (
               <div className="card" key={i}>
-                <div className="card-img-skeleton">
-                  <Skeleton height={120} width="100%"></Skeleton>
-                </div>
-                <div className="desc-box">
-                  <div className="title">
-                    <Skeleton width="100%"></Skeleton>
-                    <Skeleton width="100%"></Skeleton>
-                  </div>
-                  <div className="price-section">
-                    <Skeleton width="50%"></Skeleton>
-                  </div>
-                </div>
+                {/* <div className="card-img-skeleton"> */}
+                <Skeleton height={120} width="100%"></Skeleton>
+                {/* </div>
+                <div className="desc-box"> */}
+                {/* <div className="title"> */}
+                <Skeleton width="100%"></Skeleton>
+                <Skeleton width="100%"></Skeleton>
+                {/* </div> */}
+                {/* <div className="price-section"> */}
+                <Skeleton width="50%"></Skeleton>
+                {/* </div> */}
+                {/* </div> */}
               </div>
             ))}
           </div>

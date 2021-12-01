@@ -1,46 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./style.scss";
 import { Container } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { singleView } from "../../../../redux/actions/products";
 
 const SinglePage = () => {
+  const [product, setProduct] = useState();
+  const singleData = useSelector((state) => state.singleproduct);
+  const dispatch = useDispatch();
+  // console.log("singlepage", singleData);
+
   const { id } = useParams();
-  console.log(id);
+  useEffect(() => {
+    setProduct(singleData.products);
+    dispatch(singleView(id));
+  }, [product]);
+
+  // console.log(id);
   return (
     <>
       <Container>
-        <div className="page-content">
-          <div className="prod-view-section">
-            <div className="img-box">
-              <img src="https://picsum.photos/900/850" alt="" />
-            </div>
-            <div className="desc-box">
-              <div className="title">Samsung Electronics Mobile 5G</div>
-              <div className="price">$ 5000.39</div>
-              <div className="desc">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Pariatur facilis doloremque dolorem aperiam rem suscipit hic
-                  sunt porro consectetur eveniet. Vero, est facere. Cum
-                  cupiditate est rem placeat quo tempore?
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Pariatur facilis doloremque dolorem aperiam rem suscipit hic
-                  sunt porro consectetur eveniet. Vero, est facere. Cum
-                  cupiditate est rem placeat quo tempore?
-                </p>
+        {singleData.loading === true ? (
+          <div>loading...</div>
+        ) : (
+          <div className="page-content">
+            <div className="prod-view-section">
+              <div className="img-box">
+                <img src={product?.image} alt="" />
               </div>
-              <div className="qty">
-                <span className="qty-logo">Availabel:</span> 54
-              </div>
-              <div className="seller">Seller : Girish Chaudhari</div>
-              <div className="add-to-cart">
-                <button>Add To Cart</button>
+              <div className="desc-box">
+                <div className="title">{product?.title}</div>
+                <div className="price">${product?.price}</div>
+                <div className="desc">
+                  <p>{product?.description}</p>
+                </div>
+                <div className="qty">
+                  <span className="qty-logo">Availabel:</span> 54
+                </div>
+                <div className="seller">Category : {product?.category}</div>
+                <div className="add-to-cart">
+                  <button>Add To Cart</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </Container>
     </>
   );
