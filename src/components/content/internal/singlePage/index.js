@@ -1,28 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./style.scss";
-import { Container } from "@mui/material";
+import { CircularProgress, Container } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { singleView } from "../../../../redux/actions/products";
 
 const SinglePage = () => {
-  const [product, setProduct] = useState();
-  const singleData = useSelector((state) => state.singleproduct);
+  // const [product, setProduct] = useState();
+  const product = useSelector((state) => state.singleproduct.products);
   const dispatch = useDispatch();
   // console.log("singlepage", singleData);
 
   const { id } = useParams();
+  // const fetchSingleProduct = () => {
+  //   setProduct(singleData.products);
+  // };
+
   useEffect(() => {
-    setProduct(singleData.products);
     dispatch(singleView(id));
-  }, [product]);
+    // setProduct(singleData.products);
+    // fetchSingleProduct();
+  }, []);
 
   // console.log(id);
   return (
     <>
       <Container>
-        {singleData.loading === true ? (
-          <div>loading...</div>
+        {product.length === 0 ? (
+          <div className="progress-bar-loading">
+            <CircularProgress />
+          </div>
         ) : (
           <div className="page-content">
             <div className="prod-view-section">

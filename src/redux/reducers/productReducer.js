@@ -1,4 +1,8 @@
-import { prodConstants, singleProdConstants } from "../constants";
+import {
+  prodConstants,
+  removeSingleProdConstants,
+  singleProdConstants,
+} from "../constants";
 
 const initState = {
   products: [],
@@ -25,7 +29,7 @@ export default (state = initState, action) => {
     case prodConstants.DATA_FAILURE:
       state = {
         ...state,
-        products: action.payload,
+        products: action,
         loading: false,
       };
       break;
@@ -52,7 +56,33 @@ export const singleProductView = (state = initState, action) => {
     case singleProdConstants.DATA_FAILURE:
       state = {
         ...state,
+        products: action,
+        loading: false,
+      };
+      break;
+  }
+  return state;
+};
+export const removerSingleProductView = (state = initState, action) => {
+  switch (action.type) {
+    case removeSingleProdConstants.DATA_REQUEST:
+      state = {
+        ...state,
+        loading: true,
+      };
+      break;
+    case removeSingleProdConstants.DATA_SUCCESS:
+      state = {
+        ...state,
         products: action.payload,
+        loading: false,
+      };
+      break;
+
+    case singleProdConstants.DATA_FAILURE:
+      state = {
+        ...state,
+        products: action,
         loading: false,
       };
       break;

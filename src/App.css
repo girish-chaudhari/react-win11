@@ -2,3 +2,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.progress-bar-loading {
+  height: calc(100vh - 100px);
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
