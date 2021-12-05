@@ -20,13 +20,13 @@ const SinglePage = () => {
     dispatch(singleView(id));
     // setProduct(singleData.products);
     // fetchSingleProduct();
-  }, []);
+  }, [dispatch]);
 
   // console.log(id);
   return (
     <>
       <Container>
-        {product.length === 0 ? (
+        {product.length === 0 && product ? (
           <div className="progress-bar-loading">
             <CircularProgress />
           </div>
