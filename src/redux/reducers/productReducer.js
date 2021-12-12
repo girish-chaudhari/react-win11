@@ -1,8 +1,4 @@
-import {
-  prodConstants,
-  removeSingleProdConstants,
-  singleProdConstants,
-} from "../constants";
+import { prodConstants, singleProdConstants } from "../constants";
 
 const initState = {
   products: [],
@@ -13,23 +9,23 @@ const initState = {
 export default (state = initState, action) => {
   switch (action.type) {
     case prodConstants.DATA_REQUEST:
-      return (state = {
+      return {
         ...state,
         loading: true,
-      });
+      };
     case prodConstants.DATA_SUCCESS:
-      return (state = {
+      return {
         ...state,
         products: action.payload,
         loading: false,
-      });
+      };
 
     case prodConstants.DATA_FAILURE:
-      return (state = {
+      return {
         ...state,
         products: [],
         loading: false,
-      });
+      };
     default:
       return state;
   }
@@ -37,24 +33,24 @@ export default (state = initState, action) => {
 
 export const singleProductView = (state = initState, action) => {
   switch (action.type) {
-    case singleProdConstants.DATA_REQUEST:
-      return (state = {
+    case singleProdConstants.SINGLE_DATA_REQUEST:
+      return {
         ...state,
         loading: true,
-      });
-    case singleProdConstants.DATA_SUCCESS:
-      return (state = {
+      };
+    case singleProdConstants.SINGLE_DATA_SUCCESS:
+      return {
         ...state,
         products: action.payload,
         loading: false,
-      });
+      };
 
-    case singleProdConstants.DATA_FAILURE:
-      return (state = {
+    case singleProdConstants.SINGLE_DATA_FAILURE:
+      return {
         ...state,
         products: [],
         loading: false,
-      });
+      };
     default:
       return state;
   }

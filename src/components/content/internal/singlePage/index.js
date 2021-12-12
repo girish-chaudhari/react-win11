@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./style.scss";
 import { CircularProgress, Container } from "@mui/material";
@@ -6,21 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { singleView } from "../../../../redux/actions/products";
 
 const SinglePage = () => {
-  // const [product, setProduct] = useState();
   const product = useSelector((state) => state.singleproduct.products);
   const dispatch = useDispatch();
-  // console.log("singlepage", singleData);
-
   const { id } = useParams();
-  // const fetchSingleProduct = () => {
-  //   setProduct(singleData.products);
-  // };
 
   useEffect(() => {
     dispatch(singleView(id));
-    // setProduct(singleData.products);
-    // fetchSingleProduct();
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   // console.log(id);
   return (

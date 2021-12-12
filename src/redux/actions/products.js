@@ -1,5 +1,5 @@
 import axios from "../../config";
-import { prodConstants } from "../constants";
+import { prodConstants, singleProdConstants } from "../constants";
 
 export const productsView = () => {
   return async (dispatch) => {
@@ -20,14 +20,17 @@ export const singleView = (id) => {
   return async (dispatch) => {
     try {
       dispatch({
-        type: prodConstants.DATA_REQUEST,
+        type: singleProdConstants.SINGLE_DATA_REQUEST,
       });
       let res = await axios.get(`/products/${id}`);
       // console.log("this is single response", res);
       const data = res.data;
-      dispatch({ type: prodConstants.DATA_SUCCESS, payload: data });
+      dispatch({
+        type: singleProdConstants.SINGLE_DATA_SUCCESS,
+        payload: data,
+      });
     } catch (err) {
-      dispatch({ type: prodConstants.DATA_FAILURE });
+      dispatch({ type: singleProdConstants.SINGLE_DATA_FAILURE });
     }
   };
 };
