@@ -26,6 +26,12 @@ export default (state = initState, action) => {
         products: [],
         loading: false,
       };
+    case prodConstants.REMOVE_ALL_PRODUCTS:
+      return {
+        ...state,
+        products: [],
+        loading: false,
+      };
     default:
       return state;
   }
@@ -46,6 +52,12 @@ export const singleProductView = (state = initState, action) => {
       };
 
     case singleProdConstants.SINGLE_DATA_FAILURE:
+      return {
+        ...state,
+        products: [],
+        loading: false,
+      };
+    case singleProdConstants.REMOVE_SINGLE_DATA:
       return {
         ...state,
         products: [],

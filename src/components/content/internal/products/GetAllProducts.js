@@ -4,7 +4,10 @@ import { Container, Skeleton } from "@mui/material";
 import { Link } from "react-router-dom";
 // import { data } from "../../../../data";
 import { useDispatch, useSelector } from "react-redux";
-import { productsView } from "../../../../redux/actions/products";
+import {
+  productsView,
+  removeAllProducts,
+} from "../../../../redux/actions/products";
 
 const GetAllProducts = () => {
   const dispatch = useDispatch();
@@ -13,6 +16,9 @@ const GetAllProducts = () => {
   const { products, loading } = data;
   useEffect(() => {
     dispatch(productsView());
+    return () => {
+      dispatch(removeAllProducts());
+    };
   }, [dispatch]);
 
   return (

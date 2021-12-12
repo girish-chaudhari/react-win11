@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import "./style.scss";
 import { CircularProgress, Container } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { singleView } from "../../../../redux/actions/products";
+import { singleView, removeProducts } from "../../../../redux/actions/products";
 
 const SinglePage = () => {
   const product = useSelector((state) => state.singleproduct.products);
@@ -11,7 +11,10 @@ const SinglePage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(singleView(id));
+    if (id && id !== "") dispatch(singleView(id));
+    return () => {
+      dispatch(removeProducts());
+    };
   }, [dispatch, id]);
 
   // console.log(id);

@@ -15,6 +15,13 @@ export const productsView = () => {
     }
   };
 };
+
+export const removeAllProducts = () => {
+  return async (dispatch) => {
+    dispatch({ type: prodConstants.REMOVE_ALL_PRODUCTS });
+  };
+};
+
 export const singleView = (id) => {
   return async (dispatch) => {
     try {
@@ -30,5 +37,10 @@ export const singleView = (id) => {
     } catch (err) {
       dispatch({ type: singleProdConstants.SINGLE_DATA_FAILURE });
     }
+  };
+};
+export const removeProducts = () => {
+  return async (dispatch) => {
+    dispatch({ type: singleProdConstants.REMOVE_SINGLE_DATA });
   };
 };
