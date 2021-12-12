@@ -4,17 +4,13 @@ import { Container, Skeleton } from "@mui/material";
 import { Link } from "react-router-dom";
 // import { data } from "../../../../data";
 import { useDispatch, useSelector } from "react-redux";
-import { productsView, singleView } from "../../../../redux/actions/products";
+import { productsView } from "../../../../redux/actions/products";
 
 const GetAllProducts = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.products);
-  console.log("this is selector data", data);
-
+  const data = useSelector((state) => state.multProducts);
   const skeletonLoop = [1, 2, 3, 4, 5, 6, 7, 8];
-  const multProducts = data.products;
-  console.log("this is prooducts page here ->", multProducts);
-  const loading = data.loading;
+  const { products, loading } = data;
   useEffect(() => {
     dispatch(productsView());
   }, [dispatch]);
@@ -22,7 +18,7 @@ const GetAllProducts = () => {
   return (
     <>
       <Container>
-        {data.products.length === 0 && !data.products ? (
+        {loading ? (
           <div className="cards-box">
             {skeletonLoop.map((item, i) => (
               <div className="card" style={{ height: "250px" }} key={i}>
@@ -56,8 +52,8 @@ const GetAllProducts = () => {
           </div>
         ) : (
           <div className="cards-box">
-            {multProducts &&
-              multProducts.map((item, i) => (
+            {products &&
+              products.map((item, i) => (
                 <div className="card" key={i}>
                   <div className="card-img">
                     <img src={item.image} alt="" />

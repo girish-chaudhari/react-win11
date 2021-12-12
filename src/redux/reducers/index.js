@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import productReducer, { singleProductView } from "./productReducer";
 
 const rootReducers = combineReducers({
-  products: productReducer,
+  multProducts: productReducer,
   singleproduct: singleProductView,
 });
 export default rootReducers;
